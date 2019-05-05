@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- T_SHOPCAR -->
-<mapper namespace="com.flower.dao.shopCar">
+<mapper namespace="com.flower.dao.ShopCarDao">
     <!-- 结果映射 -->
     <resultMap id="shopCarMap" type="ShopCar">
         <id column="ID" property="id" jdbcType="INTEGER" />

@@ -3,7 +3,6 @@ package com.flower.service;
 import com.flower.dto.ResponseDto;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface ProductService {
    ResponseDto searchByWord(String word);
 

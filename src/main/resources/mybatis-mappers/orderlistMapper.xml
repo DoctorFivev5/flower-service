@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- T_ORDERLIST -->
-<mapper namespace="com.flower.dao.orderlist">
+<mapper namespace="com.flower.dao.OrderListDao">
     <!-- 结果映射 -->
     <resultMap id="orderlistMap" type="Orderlist">
         <id column="ID" property="id" jdbcType="INTEGER" />

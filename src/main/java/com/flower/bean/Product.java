@@ -1,4 +1,8 @@
 package com.flower.bean;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Product implements java.io.Serializable {
     /** 版本号 */
     private static final long serialVersionUID = -2351509732843262172L;
@@ -13,7 +17,7 @@ public class Product implements java.io.Serializable {
     private Integer type;
 
     /** json字符串数组组成的，可存储多个商品图片 */
-    private String image;
+    private String[] image;
 
     /** 价格——人民币 */
     private Double price;
@@ -98,7 +102,7 @@ public class Product implements java.io.Serializable {
      * 
      * @return json字符串数组组成的
      */
-    public String getImage() {
+    public String[] getImage() {
         return this.image;
     }
 
@@ -109,7 +113,13 @@ public class Product implements java.io.Serializable {
      *          json字符串数组组成的
      */
     public void setImage(String image) {
-        this.image = image;
+        String[] sp = image.split(",");
+        String[] sp2 = new String[sp.length];
+        for (int i = 0; i<sp.length; i++){
+            sp2[i] = "http://localhost/flower"+sp[i];
+        }
+        this.image =sp2;
+
     }
 
     /**

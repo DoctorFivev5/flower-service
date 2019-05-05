@@ -1,48 +1,56 @@
 package com.flower.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flower.dto.ResponseDto;
 import com.flower.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-
-@RestController(value = "/product")
+@RestController
 public class ProductController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(value = "/search")
-    public String searchByWord(String key) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
+    /**
+     * 根据关键字查找商品
+     * @param key
+     * @return 返回封装了
+     */
+    @RequestMapping(value = "/product/search")
+    public ResponseDto searchByWord(String key){
         //判断传输的关键字是否为空
         if (!StringUtils.isEmpty(key)){
-            return mapper.writeValueAsString(productService.searchByWord(key));
+            return productService.searchByWord(key);
         }
-        return mapper.writeValueAsString(new ResponseDto("200","搜索关键字不能为空"));
-    }
-    @RequestMapping(value = "/type")
-    public String searchByType(String type) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        //判断传输的关键字是否为空
-        if (!StringUtils.isEmpty(type)){
-            return mapper.writeValueAsString(productService.searchByType(type));
-        }
-        return mapper.writeValueAsString(new ResponseDto("200","类型不能为空"));
+        return new ResponseDto("200","搜索关键字不能为空");
     }
 
-    @RequestMapping(value = "/${id}")
-    public String getOne(@PathVariable int id) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        if (id!=0){
-            return mapper.writeValueAsString(productService.findOne(id));
+    /**
+     * 根据商品类型查找商品
+     * @param type
+     * @return
+     */
+    @RequestMapping(value = "/product/type")
+    public ResponseDto searchByType(String type){
+        //判断传输的关键字是否为空
+        if (!StringUtils.isEmpty(type)){
+            return productService.searchByType(type);
         }
-        return mapper.writeValueAsString(new ResponseDto("200","id不能为0"));
+        return new ResponseDto("200","类型不能为空");
+    }
+
+    /**
+     * 查找单个商品的详细
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/product/detail")
+    public ResponseDto getOne(int id){
+        if (id!=0){
+            return productService.findOne(id);
+        }
+        return new ResponseDto("200","id不能为0");
     }
 }

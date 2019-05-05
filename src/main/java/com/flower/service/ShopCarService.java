@@ -4,7 +4,6 @@ import com.flower.bean.ShopCar;
 import com.flower.dto.ResponseDto;
 import org.springframework.stereotype.Service;
 
-@Service
-public interface ShopcarService {
+public interface ShopCarService {
     ResponseDto addShopcar(ShopCar shopCar);
 }

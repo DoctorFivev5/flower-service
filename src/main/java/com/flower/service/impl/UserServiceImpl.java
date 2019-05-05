@@ -5,12 +5,14 @@ import com.flower.dao.UserDao;
 import com.flower.dto.ResponseDto;
 import com.flower.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
@@ -33,11 +35,9 @@ public class UserServiceImpl implements UserService {
             //用户存在
             return new ResponseDto("200","",users);
         }else {
-            map.put("phone",user.getPhone());
-            map.put("username",user.getUsername());
-            int i = userDao.insertUser(map);
+            userDao.insertUser(user);
             List list = new ArrayList();
-            if (i>=1){
+            if (user.getId()!=0){
                 list.add(user);
                 return new ResponseDto("200","",list);
             }else
