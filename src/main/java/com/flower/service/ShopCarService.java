@@ -5,5 +5,11 @@ import com.flower.dto.ResponseDto;
 import org.springframework.stereotype.Service;
 
 public interface ShopCarService {
-    ResponseDto addShopcar(ShopCar shopCar);
+    ResponseDto addShopCar(ShopCar shopCar);
+
+    ResponseDto updateShopCar(ShopCar shopCar);
+
+    ResponseDto getAllShopCar(int userId);
+
+    ResponseDto deleteShopCar(ShopCar shopCar);
 }

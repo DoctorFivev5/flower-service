@@ -17,7 +17,7 @@ public interface UserDao {
 
     List<User> findUserByIds(List list);
 
-    void insertUser(User user);
+    int insertUser(User user);
 
     int insertUsers(List<User> users);
 

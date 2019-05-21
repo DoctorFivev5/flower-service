@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
             //用户存在
             return new ResponseDto("200","",users);
         }else {
-            userDao.insertUser(user);
+            int id = userDao.insertUser(user);
             List list = new ArrayList();
             if (user.getId()!=0){
                 list.add(user);

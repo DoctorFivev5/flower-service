@@ -51,6 +51,7 @@ public class UserController {
         }
         //{"session_key":"ySkVwL\/rVdqhg0tdyHhkTg==","openid":"opD6m5KMupHYZrrO1dvOBODSEt0w"}
         session.setAttribute("session_key", json);
+
         ObjectMapper mapper = new ObjectMapper();
         WXSession wxSession = mapper.readValue(json.toString(), WXSession.class);
         user.setOpenid(wxSession.getOpenid());
@@ -60,7 +61,11 @@ public class UserController {
 
         //判断数据库中是否存在openid即用户是否注册过，未注册则用微信信息--名字和openid等进行注册
         //若已存在则读取数据库中的信息进行登录响应
-        return userService.login(user);
+        ResponseDto responseDto = userService.login(user);
+        User user1 = ((User) responseDto.getData().get(0));
+        session.setAttribute("userId",((User) responseDto.getData().get(0)).getId());
+        System.out.println(user1);
+        return responseDto;
     }
 
 

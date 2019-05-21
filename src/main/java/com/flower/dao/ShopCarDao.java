@@ -1,6 +1,7 @@
 package com.flower.dao;
 
 import com.flower.bean.ShopCar;
+import com.flower.dto.ShopCarDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +11,11 @@ import java.util.Map;
 @Mapper
 @Component
 public interface ShopCarDao {
-    List<ShopCar> findShopCarAll();
+    List<ShopCarDto> findShopCarAll();
 
     List<ShopCar> findShopCarByCondition(Map map);
 
-    List<ShopCar> findShopCarByIds(List list);
+    List<ShopCarDto> findShopCarByUserIds(List list);
 
     int insertShopCar(Map map);
 

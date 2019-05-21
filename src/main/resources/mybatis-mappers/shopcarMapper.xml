@@ -12,17 +12,37 @@
         <result column="NUMBER" property="number" jdbcType="INTEGER" />
         <result column="SELECTED" property="selected" jdbcType="VARCHAR" />
     </resultMap>
-    
+
+    <resultMap id="shopCarDtoMap" type="ShopCarDto">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="productId" property="productId" jdbcType="INTEGER" />
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="NUMBER" property="number" jdbcType="INTEGER" />
+        <result column="SELECTED" property="selected" jdbcType="VARCHAR" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <result column="TYPE" property="type" jdbcType="VARCHAR" />
+        <result column="IMAGE" property="image" jdbcType="VARCHAR" />
+        <result column="PRICE" property="price" jdbcType="VARCHAR" />
+        <result column="FREIGHT" property="freight" jdbcType="VARCHAR" />
+        <result column="SOLD" property="sold" jdbcType="INTEGER" />
+        <result column="EXTRA" property="extra" jdbcType="VARCHAR" />
+        <result column="INTRODUCE" property="introduce" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="VARCHAR" />
+        <result column="INVENTORY" property="inventory" jdbcType="INTEGER" />
+    </resultMap>
+
     <!-- 表所有字段 -->
     <sql id="allColumns">
         ID, productId, userId, NUMBER, SELECTED
     </sql>
     
     <!-- 查询所有数据 -->
-    <select id="findShopCarAll" resultMap="shopCarMap">
+    <!--连接产品表-->
+    <select id="findShopCarAll" resultMap="shopCarDtoMap">
         SELECT
-        <include refid="allColumns" />
-        FROM T_SHOPCAR
+        T_SHOPCAR.id as ID, productId, userId, NUMBER, SELECTED,name,type,image,price,introduce
+        FROM T_SHOPCAR, T_PRODUCT
+        WHERE T_SHOPCAR.productId=T_PRODUCT.id
     </select>
     
     <!-- 根据条件查询数据 -->
@@ -45,13 +65,15 @@
     </select>
     
     <!-- 根据主键查询数据 -->
-    <select id="findShopCarByIds" resultMap="shopCarMap" parameterType="list">
+    <select id="findShopCarByUserIds" resultMap="shopCarDtoMap" parameterType="list">
         SELECT
-        <include refid="allColumns" />
-        FROM T_SHOPCAR WHERE ID IN
+        T_SHOPCAR.id as ID, productId, userId, NUMBER, SELECTED,name,type,image,price,introduce
+        FROM T_SHOPCAR,T_PRODUCT
+        WHERE T_SHOPCAR.userId IN
         <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
             #{id}
         </foreach>
+        AND T_SHOPCAR.productId=T_PRODUCT.id
     </select>
     
     <!-- 插入数据 -->
