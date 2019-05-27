@@ -1,14 +1,14 @@
 package com.flower.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flower.bean.ShopCar;
+import com.flower.dto.ListDto;
 import com.flower.dto.ResponseDto;
 import com.flower.service.ShopCarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -34,6 +34,11 @@ public class ShopCarController {
     @RequestMapping(value = "/shopCar/updateShopCar")
     public ResponseDto updateShopCar(ShopCar shopCar){
         return shopCarService.updateShopCar(shopCar);
+    }
+    @RequestMapping(value = "/shopCar/updateShopCars")
+    public ResponseDto updateShopCar(ListDto list){
+        List<ShopCar> shopCars = JSON.parseArray(list.getList(), ShopCar.class);
+        return shopCarService.updateShopCars(shopCars);
     }
     //获取所有购物车项
     @RequestMapping(value = "/shopCar")

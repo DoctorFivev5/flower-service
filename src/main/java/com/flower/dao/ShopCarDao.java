@@ -23,7 +23,7 @@ public interface ShopCarDao {
 
     int updateShopCar(Map map);
 
-    int updateShopCars(List<ShopCar> shopCars);
+    int updateShopCars(List<ShopCar> list);
 
     int deleteShopCarById(int id);
 

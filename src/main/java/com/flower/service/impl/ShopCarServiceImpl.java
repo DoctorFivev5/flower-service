@@ -51,6 +51,14 @@ public class ShopCarServiceImpl implements ShopCarService {
     }
 
     @Override
+    public ResponseDto updateShopCars(List<ShopCar> shopCars) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("shopCars", shopCars);
+        shopCarDao.updateShopCars(shopCars);
+        return new ResponseDto("200","");
+    }
+
+    @Override
     public ResponseDto getAllShopCar(int userId) {
         List list = new ArrayList();
         list.add(userId);

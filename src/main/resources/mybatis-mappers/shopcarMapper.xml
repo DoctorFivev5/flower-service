@@ -116,14 +116,14 @@
     </update>
     
     <!-- 批量修改数据 -->
-    <update id="updateShopCars" parameterType="list">
+    <update id="updateShopCars" parameterType="java.util.List">
         <foreach collection="list" index="index" item="item" separator=";">
             UPDATE T_SHOPCAR
             <set>
-                <if test="productId != null">productId = #{item.productId},</if>
-                <if test="userId != null">userId = #{item.userId},</if>
-                <if test="number != null">NUMBER = #{item.number},</if>
-                <if test="selected != null">SELECTED = #{item.selected}</if>
+                <if test="item.productId != null">productId = #{item.productId},</if>
+                <if test="item.userId != null">userId = #{item.userId},</if>
+                <if test="item.number != null">number = #{item.number},</if>
+                <if test="item.selected != null">SELECTED = #{item.selected}</if>
             </set>
             WHERE ID = #{item.id}
         </foreach>
