@@ -1,6 +1,7 @@
 package com.flower.service;
 
-import org.springframework.stereotype.Service;
+import com.flower.dto.ResponseDto;
 
 public interface OrderListService {
+    ResponseDto getOrderListByOrderId(Integer orderId);
 }

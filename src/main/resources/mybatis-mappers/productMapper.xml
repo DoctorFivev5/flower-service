@@ -78,7 +78,13 @@
             #{id}
         </foreach>
     </select>
-    
+
+    <select id="findProductById" resultMap="productMap">
+        SELECT
+        <include refid="allColumns" />
+        FROM t_product WHERE ID = #{productId}
+    </select>
+
     <!-- 插入数据 -->
     <insert id="insertProduct" parameterType="map">
         INSERT INTO T_PRODUCT (<include refid="allColumns" />)

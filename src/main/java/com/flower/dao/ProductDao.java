@@ -2,6 +2,7 @@ package com.flower.dao;
 
 import com.flower.bean.Product;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface ProductDao {
     List<Product> findProductByCondition(Map map);
 
     List<Product> findProductByIds(List list);
+
+    Product findProductById(@Param("productId") Integer productId);
 
     int insertProduct(Map map);
 

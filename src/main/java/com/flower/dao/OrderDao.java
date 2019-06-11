@@ -2,6 +2,7 @@ package com.flower.dao;
 
 import com.flower.bean.Order;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface OrderDao {
     List<Order> findOrderByCondition(Map map);
 
     List<Order> findOrderByIds(List list);
+
+    Order findOrderById(@Param("orderId") Integer orderId);
 
     int insertOrder(Map map);
 

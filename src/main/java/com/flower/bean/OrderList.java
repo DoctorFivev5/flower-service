@@ -12,6 +12,8 @@ public class OrderList implements java.io.Serializable {
     /** 外键，产品id */
     private Integer productId;
 
+    private Product product;
+
     /** 外键，用户id */
     private Integer userId;
 
@@ -20,7 +22,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 获取订单项唯一标识id
-     * 
+     *
      * @return 订单项唯一标识id
      */
     public Integer getId() {
@@ -29,7 +31,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 设置订单项唯一标识id
-     * 
+     *
      * @param id
      *          订单项唯一标识id
      */
@@ -39,7 +41,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 获取外键，订单id
-     * 
+     *
      * @return 外键
      */
     public Integer getOrderId() {
@@ -48,7 +50,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 设置外键，订单id
-     * 
+     *
      * @param orderId
      *          外键
      */
@@ -58,7 +60,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 获取外键，产品id
-     * 
+     *
      * @return 外键
      */
     public Integer getProductId() {
@@ -67,7 +69,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 设置外键，产品id
-     * 
+     *
      * @param productId
      *          外键
      */
@@ -75,9 +77,17 @@ public class OrderList implements java.io.Serializable {
         this.productId = productId;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     /**
      * 获取外键，用户id
-     * 
+     *
      * @return 外键
      */
     public Integer getUserId() {
@@ -86,7 +96,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 设置外键，用户id
-     * 
+     *
      * @param userId
      *          外键
      */
@@ -96,7 +106,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 获取购买数量
-     * 
+     *
      * @return 购买数量
      */
     public Integer getNumber() {
@@ -105,7 +115,7 @@ public class OrderList implements java.io.Serializable {
 
     /**
      * 设置购买数量
-     * 
+     *
      * @param number
      *          购买数量
      */

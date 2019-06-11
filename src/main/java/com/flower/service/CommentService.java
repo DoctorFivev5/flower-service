@@ -1,6 +1,8 @@
 package com.flower.service;
 
-import org.springframework.stereotype.Service;
+import com.flower.bean.Comment;
+import com.flower.dto.ResponseDto;
 
 public interface CommentService {
+    ResponseDto evaluate(Comment comment);
 }

@@ -1,9 +1,10 @@
 package com.flower.bean;
 import java.util.Date;
+import java.util.List;
 
 /**
- * T_ORDER
- * 
+ * t_order
+ *
  * @author bianj
  * @version 1.0.0 2019-04-30
  */
@@ -38,9 +39,11 @@ public class Order implements java.io.Serializable {
     /** 流水号 */
     private Integer orderNumber;
 
+    private List<OrderList> orderLists;
+
     /**
      * 获取订单唯一标识id
-     * 
+     *
      * @return 订单唯一标识id
      */
     public Integer getId() {
@@ -49,7 +52,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置订单唯一标识id
-     * 
+     *
      * @param id
      *          订单唯一标识id
      */
@@ -59,7 +62,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取外键，用户id
-     * 
+     *
      * @return 外键
      */
     public Integer getUserId() {
@@ -68,7 +71,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置外键，用户id
-     * 
+     *
      * @param userId
      *          外键
      */
@@ -78,7 +81,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取订单描述
-     * 
+     *
      * @return 订单描述
      */
     public String getDetail() {
@@ -87,7 +90,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置订单描述
-     * 
+     *
      * @param detail
      *          订单描述
      */
@@ -97,7 +100,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取订单总价格
-     * 
+     *
      * @return 订单总价格
      */
     public Double getPrice() {
@@ -106,7 +109,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置订单总价格
-     * 
+     *
      * @param price
      *          订单总价格
      */
@@ -116,7 +119,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取订单状态,0已取消，1待支付，2待发货，3待收货，4待评价，5已评价
-     * 
+     *
      * @return 订单状态,0已取消
      */
     public Integer getStatus() {
@@ -125,7 +128,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置订单状态,0已取消，1待支付，2待发货，3待收货，4待评价，5已评价
-     * 
+     *
      * @param status
      *          订单状态,0已取消
      */
@@ -135,7 +138,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取下单时间
-     * 
+     *
      * @return 下单时间
      */
     public Date getStartDate() {
@@ -144,7 +147,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置下单时间
-     * 
+     *
      * @param startDate
      *          下单时间
      */
@@ -154,7 +157,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取外键，地址id
-     * 
+     *
      * @return 外键
      */
     public Integer getAddressId() {
@@ -163,7 +166,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置外键，地址id
-     * 
+     *
      * @param addressId
      *          外键
      */
@@ -173,7 +176,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取备注
-     * 
+     *
      * @return 备注
      */
     public String getRemark() {
@@ -182,7 +185,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置备注
-     * 
+     *
      * @param remark
      *          备注
      */
@@ -192,7 +195,7 @@ public class Order implements java.io.Serializable {
 
     /**
      * 获取流水号
-     * 
+     *
      * @return 流水号
      */
     public Integer getOrderNumber() {
@@ -201,11 +204,19 @@ public class Order implements java.io.Serializable {
 
     /**
      * 设置流水号
-     * 
+     *
      * @param orderNumber
      *          流水号
      */
     public void setOrderNumber(Integer orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public List<OrderList> getOrderLists() {
+        return orderLists;
+    }
+
+    public void setOrderLists(List<OrderList> orderLists) {
+        this.orderLists = orderLists;
     }
 }

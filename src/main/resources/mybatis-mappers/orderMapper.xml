@@ -70,6 +70,11 @@
             #{id}
         </foreach>
     </select>
+
+    <select id="findOrderById" parameterType="java.lang.Integer" resultType="com.flower.bean.Order">
+        select <include refid="allColumns" />
+        FROM t_order WHERE ID = #{orderId}
+    </select>
     
     <!-- 插入数据 -->
     <insert id="insertOrder" parameterType="map">
