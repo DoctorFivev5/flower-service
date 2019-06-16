@@ -116,7 +116,7 @@ public class Product implements java.io.Serializable {
         String[] sp = image.split(",");
         String[] sp2 = new String[sp.length];
         for (int i = 0; i<sp.length; i++){
-            sp2[i] = "http://localhost/flower"+sp[i];
+            sp2[i] = "http://localhost:8080/flower"+sp[i];
         }
         this.image =sp2;
 
